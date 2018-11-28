@@ -10,6 +10,7 @@ import (
 	"ad_exporter/exporter"
 	"github.com/prometheus/client_golang/prometheus"
 	"log"
+	"time"
 )
 
 
@@ -32,6 +33,7 @@ func main(){
 	serviceAccountName:=flag.String("user","gitlab","User account to be monitored")
 	exporterPort:=flag.String("exporterPort","2134","Port on which the exporter should listen")
 	serviceAccountPassword:=os.Getenv("BIND_PASSWORD")
+	ldapBindTimeOut:=flag.Duration("timeout",5*time.Second,"How long should the exporter wait before exporter times out")
 
 	flag.Parse()
 	log.Printf("Parsing completed")
@@ -41,6 +43,7 @@ func main(){
 	vars.Inputs.LdapServer=*ldapServer
 	vars.Inputs.LdapServerPort=*ldapServerPort
 	vars.Inputs.LdapFullPath=vars.Inputs.LdapServer+":"+vars.Inputs.LdapServerPort
+	vars.Inputs.LdapConnectionTimeOut=*ldapBindTimeOut
 	exporterCollector:=exporter.ADmetricsCollector()
 	prometheus.MustRegister(exporterCollector)
 

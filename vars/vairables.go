@@ -1,5 +1,7 @@
 package vars
 
+import "time"
+
 type Exporterattributes struct{
 
 	UserName string
@@ -13,6 +15,7 @@ type Exporterattributes struct{
 	UserAccountLocked float64
 	UserAccountWrongPassword float64
 	LdapConnectionStatus float64
+	LdapConnectionTimeOut time.Duration
 
 }
 var Inputs Exporterattributes

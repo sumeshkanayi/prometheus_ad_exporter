@@ -7,7 +7,6 @@ import (
 	"github.com/y0ssar1an/q"
 	"strings"
 	"ad_exporter/vars"
-	"time"
 )
 var ldapConnectionError float64
 
@@ -22,9 +21,11 @@ type ldapConnection struct {
 
 func connectToLdap(ldapServer string,port string)(ldapConnection){
 	var ldapConnectionDetails ldapConnection
-  ldap.DefaultTimeout=2*time.Second
+  ldap.DefaultTimeout=vars.Inputs.LdapConnectionTimeOut
+  log.Printf("Dialing LDAP server",vars.Inputs.LdapFullPath,vars.Inputs.UserName)
+
 	connection,err:=ldap.Dial("tcp",ldapServer+":"+port)
-	q.Q(connection)
+	//q.Q(connection)
 
 	ldapConnectionDetails.error=err
 
@@ -38,7 +39,7 @@ func connectToLdap(ldapServer string,port string)(ldapConnection){
 
 	}
 
-
+	log.Printf("Dialing LDAP server successfully completed")
 	ldapConnectionDetails.connection=*connection
 
 	return ldapConnectionDetails
@@ -49,7 +50,7 @@ func bindToLdap(connectionPointer ldap.Conn,userName string,password string) (er
 	connectionError:=connectionPointer.Bind(userName,password)
 
 
-	log.Printf("Trying LDAP binding")
+	log.Printf("Binding to LDAP")
 	fmt.Println(connectionError)
 	//q.Q(connectionError)
 	//q.Q(userName)
