@@ -5,7 +5,7 @@ setup:
 	echo "copy completed"
 build:	setup
 	echo "pre installing packages , you will require internet access.Setup your proxy accoridngly"
-  go get ./...
+    go get ./...
 	go build -o ad_exporter main.go
 	echo "pre requisite installation competed"
 run:	build
