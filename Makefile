@@ -1,8 +1,7 @@
 default:    run
 setup:
-	git pull
 	echo "Starting copying the source ${PWD} to ${GOPATH}"
-	cp -r ${PWD} ${GOPATH}/src
+	go get github.com/sumeshkanayi/prometheus_ad_exporter
 	echo "copy completed"
 build:	setup
 	echo "pre installing packages , you will require internet access.Setup your proxy accoridngly"
