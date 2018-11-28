@@ -22,7 +22,7 @@ type ldapConnection struct {
 func connectToLdap(ldapServer string,port string)(ldapConnection){
 	var ldapConnectionDetails ldapConnection
   ldap.DefaultTimeout=vars.Inputs.LdapConnectionTimeOut
-  log.Printf("Dialing LDAP server %s , %s ",vars.Inputs.LdapFullPath,vars.Inputs.UserName)
+  log.Printf("Dialing LDAP server %s , Binding using %s ",vars.Inputs.LdapFullPath,vars.Inputs.UserName)
 
 	connection,err:=ldap.Dial("tcp",ldapServer+":"+port)
 	//q.Q(connection)
