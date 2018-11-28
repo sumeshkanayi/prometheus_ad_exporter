@@ -7,9 +7,10 @@ import (
 	"github.com/y0ssar1an/q"
 	"strings"
 	"ad_exporter/vars"
+	"time"
 )
 var ldapConnectionError float64
-
+ldap.DefaultTimeout=2*time.Second
 
 type ldapConnection struct {
 
