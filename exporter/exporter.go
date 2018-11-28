@@ -10,7 +10,8 @@ import (
 	"time"
 )
 var ldapConnectionError float64
-var DefaultTimeout=2*time.Second
+
+//var DefaultTimeout=2*time.Second
 
 type ldapConnection struct {
 
@@ -21,7 +22,7 @@ type ldapConnection struct {
 
 func connectToLdap(ldapServer string,port string)(ldapConnection){
 	var ldapConnectionDetails ldapConnection
-
+  ldap.DefaultTimeout=2*time.Second
 	connection,err:=ldap.Dial("tcp",ldapServer+":"+port)
 	q.Q(connection)
 

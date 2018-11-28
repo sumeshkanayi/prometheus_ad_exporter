@@ -19,10 +19,6 @@ import (
 
 
 
-
-
-
-
 func init(){
 
 
@@ -34,6 +30,7 @@ func main(){
 	ldapServer:=flag.String("server","ad","LDAP Server Hostname or port")
 	ldapServerPort:=flag.String("port","389","LDAP Server port")
 	serviceAccountName:=flag.String("user","gitlab","User account to be monitored")
+	exporterPort:=flag.String("exporterPort","2134","Port on which the exporter should listen")
 	serviceAccountPassword:=os.Getenv("BIND_PASSWORD")
 
 	flag.Parse()
@@ -51,7 +48,7 @@ func main(){
 
 
 	http.Handle("/metrics", promhttp.Handler())
-	http.ListenAndServe(":2112", nil)
+	http.ListenAndServe(":"+*exporterPort, nil)
 
 }
 
