@@ -9,6 +9,7 @@ import (
 
 	"ad_exporter/exporter"
 	"github.com/prometheus/client_golang/prometheus"
+	"log"
 )
 
 
@@ -32,10 +33,11 @@ func main(){
 
 	ldapServer:=flag.String("server","ad","LDAP Server Hostname or port")
 	ldapServerPort:=flag.String("port","389","LDAP Server port")
-	serviceAccountName:=flag.String("user","adminxi","User account to be monitored")
+	serviceAccountName:=flag.String("user","gitlab","User account to be monitored")
 	serviceAccountPassword:=os.Getenv("BIND_PASSWORD")
 
 	flag.Parse()
+	log.Printf("Parsing completed")
 
 	vars.Inputs.UserName=*serviceAccountName
 	vars.Inputs.LdapBindPassword=serviceAccountPassword

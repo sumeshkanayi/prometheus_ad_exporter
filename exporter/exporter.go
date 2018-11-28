@@ -10,6 +10,7 @@ import (
 )
 var ldapConnectionError float64
 
+
 type ldapConnection struct {
 
 	connection ldap.Conn
@@ -21,6 +22,8 @@ func connectToLdap(ldapServer string,port string)(ldapConnection){
 	var ldapConnectionDetails ldapConnection
 
 	connection,err:=ldap.Dial("tcp",ldapServer+":"+port)
+	q.Q(connection)
+
 	ldapConnectionDetails.error=err
 
 	if err!=nil{
