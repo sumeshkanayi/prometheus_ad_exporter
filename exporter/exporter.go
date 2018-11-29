@@ -5,7 +5,7 @@ import (
 	"log"
 	"github.com/y0ssar1an/q"
 	"strings"
-	"ad_exporter/vars"
+	"github.com/sumeshkanayi/prometheus_ad_exporter/vars"
 )
 var ldapConnectionError float64
 
