@@ -30,7 +30,7 @@ func main(){
 
 	ldapServer:=flag.String("server","ad","LDAP Server Hostname or port")
 	ldapServerPort:=flag.String("port","389","LDAP Server port")
-	serviceAccountName:=flag.String("user","user","User account to be monitored")
+	serviceAccountName:=flag.String("user","user@domain","User account to be monitored")
 	exporterPort:=flag.String("exporterPort","2134","Port on which the exporter should listen")
 	serviceAccountPassword:=os.Getenv("BIND_PASSWORD")
 	ldapBindTimeOut:=flag.Duration("timeout",5*time.Second,"How long should the exporter wait before exporter times out")
