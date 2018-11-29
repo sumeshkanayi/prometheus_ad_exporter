@@ -4,7 +4,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/y0ssar1an/q"
 	"log"
-	"ad_exporter/vars"
+	"github.com/sumeshkanayi/prometheus_ad_exporter/vars"
 )
 var labelArray []string
 
