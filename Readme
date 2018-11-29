@@ -1,10 +1,10 @@
 Usage:
 
-This exporter will get triggered when the metrics end point is scrapped by prometheus
+This exporter will get triggered when the metrics end point is scrapped by prometheus or through a get call
 
 User account password should be mentioned as an environment variable BIND_PASSWORD
 
-Export BIND_PASSWORD="password"
+export BIND_PASSWORD="password"
 
 
 ./ad_exporter -h
