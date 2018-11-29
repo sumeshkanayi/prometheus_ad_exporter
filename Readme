@@ -1,0 +1,6 @@
+Usage:
+
+User account password should be mentioned as an environment variable BIND_PASSWORD
+
+Export BIND_PASSWORD="password"
+
