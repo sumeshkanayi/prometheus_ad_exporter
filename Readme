@@ -6,6 +6,8 @@ User account password should be mentioned as an environment variable BIND_PASSWO
 
 export BIND_PASSWORD="password"
 
+make sure that user parameter ollowing the format user@domainFQDN
+
 
 ./ad_exporter -h
 
