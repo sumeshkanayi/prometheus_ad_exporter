@@ -3,7 +3,6 @@ package exporter
 import (
 	"gopkg.in/ldap.v2"
 	"log"
-	"fmt"
 	"github.com/y0ssar1an/q"
 	"strings"
 	"ad_exporter/vars"
@@ -51,7 +50,10 @@ func bindToLdap(connectionPointer ldap.Conn,userName string,password string) (er
 
 
 	log.Printf("Binding to LDAP")
-	fmt.Println(connectionError)
+	if connectionError!=nil {
+		log.Printf("LDAP connection error",connectionError)
+
+	}
 	//q.Q(connectionError)
 	//q.Q(userName)
 

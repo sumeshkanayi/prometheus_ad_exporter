@@ -1,5 +1,7 @@
 Usage:
 
+This exporter will get triggered when the metrics end point is scrapped by prometheus
+
 User account password should be mentioned as an environment variable BIND_PASSWORD
 
 Export BIND_PASSWORD="password"
@@ -18,3 +20,53 @@ Usage of ./ad_exporter:
     	How long should the exporter wait before exporter times out (default 5s)
   -user string
     	User account to be monitored (default "user")
+
+
+  Metrices exported examples:
+
+  LDAP server is not reachable:-
+
+  ldap_connection_status_gauge{ldap_server="ad:389",user_name="gitlab"} 1
+
+
+  LDAP server is working fine:-
+
+  ldap_connection_status_gauge{ldap_server="ad:389",user_name="gitlab"} 0
+
+
+  User account password is expired:-
+
+  password_expired_status_gauge{ldap_server="ad:389",user_name="gitlab"} 1
+
+  User account password is valid:
+
+  password_expired_status_gauge{ldap_server="ad:389",user_name="gitlab"} 0
+
+
+
+
+  User account is disabled:-
+
+  account_disabled_status_gauge{ldap_server="ad:389",user_name="gitlab"} 1
+
+  User account is enabled:-
+
+  account_disabled_status_gauge{ldap_server="ad:389",user_name="gitlab"} 0
+
+  User account active (Not locked):-
+
+  account_lockout_status_gauge{ldap_server="ad:389",user_name="gitlab"} 0
+
+  User account is currently locked :-
+
+  account_lockout_status_gauge{ldap_server="ad:389",user_name="gitlab"} 1
+
+  Exporter trying to connect with correct password:-
+
+  credential_validation_status_gauge{ldap_server="ad:389",user_name="gitlab"} 0
+
+  Exporter trying to connect with wrong password:-
+
+  credential_validation_status_gauge{ldap_server="ad:389",user_name="gitlab"} 1
+
+
