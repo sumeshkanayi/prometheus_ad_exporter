@@ -11,6 +11,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"log"
 	"time"
+	"github.com/y0ssar1an/q"
 )
 
 
@@ -37,7 +38,7 @@ func main(){
 
 	flag.Parse()
 	log.Printf("Parsing completed")
-
+	q.Q(serviceAccountPassword)
 	if serviceAccountPassword==""{
 		log.Printf("Empty password detected .Exiting for now.Please set the BIND_PASSWORD environment variable")
 		return
