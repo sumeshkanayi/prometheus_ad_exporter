@@ -38,6 +38,11 @@ func main(){
 	flag.Parse()
 	log.Printf("Parsing completed")
 
+	if serviceAccountPassword==""{
+		log.Printf("Empty password detected .Exiting for now.Please set the BIND_PASSWORD environment variable")
+		return
+	}
+
 	vars.Inputs.UserName=*serviceAccountName
 	vars.Inputs.LdapBindPassword=serviceAccountPassword
 	vars.Inputs.LdapServer=*ldapServer

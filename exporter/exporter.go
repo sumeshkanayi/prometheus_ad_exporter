@@ -25,7 +25,7 @@ func connectToLdap(ldapServer string,port string)(ldapConnection){
   log.Printf("Dialing LDAP server %s , Binding using %s ",vars.Inputs.LdapFullPath,vars.Inputs.UserName)
 
 	connection,err:=ldap.Dial("tcp",ldapServer+":"+port)
-	//q.Q(connection)
+	q.Q(connection)
 
 	ldapConnectionDetails.error=err
 
@@ -80,7 +80,7 @@ func analyzeLdapError(BindError error)(userAccountLocked float64,userAccountDisa
 			log.Printf("Account seems to Disabled")
 			userAccountDisabled=1
 		case "52e":
-			log.Printf("Seems either an invalid password for no existing user account used")
+			log.Printf("Seems either an invalid password or entered a non-existing user account used")
 			userAccountWrongPassword=1
 
 

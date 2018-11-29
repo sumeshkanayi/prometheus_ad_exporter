@@ -4,3 +4,17 @@ User account password should be mentioned as an environment variable BIND_PASSWO
 
 Export BIND_PASSWORD="password"
 
+
+./ad_exporter -h
+
+Usage of ./ad_exporter:
+  -exporterPort string
+    	Port on which the exporter should listen (default "2134")
+  -port string
+    	LDAP Server port (default "389")
+  -server string
+    	LDAP Server Hostname or port (default "ad")
+  -timeout duration
+    	How long should the exporter wait before exporter times out (default 5s)
+  -user string
+    	User account to be monitored (default "user")
