@@ -5,9 +5,9 @@ import (
 	"os"
 	"net/http"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"ad_exporter/vars"
+	"github.com/sumeshkanayi/prometheus_ad_exporter/vars"
 
-	"ad_exporter/exporter"
+	"github.com/sumeshkanayi/prometheus_ad_exporter/exporter"
 	"github.com/prometheus/client_golang/prometheus"
 	"log"
 	"time"
