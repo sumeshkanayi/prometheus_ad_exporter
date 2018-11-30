@@ -36,7 +36,8 @@ func main(){
 	ldapBindTimeOut:=flag.Duration("timeout",5*time.Second,"How long should the exporter wait before exporter times out")
 
 	flag.Parse()
-	log.Printf("Parsing completed")
+	log.Printf("Parsing input variables completed")
+	log.Printf("Waiting for prometheus to start scrapping")
 	if serviceAccountPassword==""{
 		log.Printf("Empty password detected .Exiting for now.Please set the BIND_PASSWORD environment variable")
 		return

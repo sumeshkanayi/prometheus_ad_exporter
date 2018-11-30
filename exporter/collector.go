@@ -66,8 +66,8 @@ func (collector *adMetrics) Describe(ch chan<- *prometheus.Desc){
 
 
 func (collector *adMetrics) Collect(ch chan<- prometheus.Metric) {
-
-
+   
+        log.printf("Scrapping initiated")
 	connection := connectToLdap(vars.Inputs.LdapServer, vars.Inputs.LdapServerPort)
 	q.Q(connection)
 	if connection.error != nil {
