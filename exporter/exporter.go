@@ -57,6 +57,7 @@ func bindToLdap(connectionPointer ldap.Conn,userName string,password string) (er
 	//q.Q(connectionError)
 	//q.Q(userName)
 
+	log.Printf("Binding successfull")
 	return connectionError
 
 }
